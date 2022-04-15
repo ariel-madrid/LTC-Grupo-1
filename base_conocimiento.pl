@@ -37,7 +37,7 @@ juego(deus_ex,accion,2000,100%,88).
 juego(call_of_duty,accion,2003,any%,89).
 juego(call_of_duty,accion,2003,100%,276).
 juego(ico,aventura,2002,any%,115).
-juego(ico,aventura,2002,100%,0).
+juego(ico,aventura,2002,100%,214).
 juego(sonic_rush,plataforma,2005,any%,0).
 juego(sonic_rush,plataforma,2005,100%,133).
 juego(pro_evolution_Soccer_6,deporte,2006,any%,163).
