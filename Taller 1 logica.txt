@@ -1,0 +1,21 @@
+Requisitos a considerar:
+	- Interaccion en tiempo real
+	- Juegos desde 1990-2000
+	- Precedir al menos 3 juegos considerando: Tiempo dispuesto a destinar, nivel de habilidad, decada preferencia (opcional), tipo de juego de preferencia.
+Preguntas:
+
+¿Con cuanto tiempo dispone para dedicar al videojuego?
+	* 1Poco	*2Prefiero un juego de mediana duracion	* 3No es relevante
+
+¿Es de su preferencia alguna decada en especifico?
+	1(Seleccionar)↓ 
+¿Que tan hábil se considera?
+	* Novato * Experto → (En base a esta eleccion elegir any%, 100%)
+¿Que tipo de juego prefiere?
+	* Desafiante * Prefiero explorar * Disparos * Me gustan los coches * Cualquiera (Esta eleccion define la categoria)
+
+Sugerencias:
+	A cada juego elegido en la base de conocimiento agregar:
+		- Record mundial en determinada categoria, ejemplo:
+		juego(super_mario_odyssey,plataforma,2018,57,any%).
+		juego(super_mario_odyssey,plataforma,2018,480,100%).
