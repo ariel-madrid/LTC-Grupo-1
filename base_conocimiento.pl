@@ -37,17 +37,22 @@ juego(deus_ex,accion,2000,100%,88).
 juego(call_of_duty,accion,2003,any%,89).
 juego(call_of_duty,accion,2003,100%,276).
 juego(ico,aventura,2002,any%,115).
-juego(ico,aventura,2002,100%,214).
-juego(sonic_rush,plataforma,2005,any%,0).
-juego(sonic_rush,plataforma,2005,100%,133).
+juego(ico,aventura,2002,100%,214). #Ilumnate
+juego(metal_gear_solid_2_substance,aventura,2002,any%,60).
+juego(metal_gear_solid_2_substance,aventura,2002,100%,97).
+juego(kirby_squeak_squad,plataforma,2006,any%,38).
+juego(kirby_squeak_squad,plataforma,2006,100%,57).
+juego(sonic_rush,plataforma,2005,any%,41). #All Stages
+juego(sonic_rush,plataforma,2005,100%,133). #All Stories
 juego(pro_evolution_Soccer_6,deporte,2006,any%,163).
 juego(pro_evolution_Soccer_6,deporte,2006,100%,0).
 juego(project_gotham_racing_4,coches,2007,any%,172).
 juego(project_gotham_racing_4,coches,2007,100%,0).
-juego(colin_mcRae_rally_04,coches,2004).
-juego(alan_wake,terror,2010).
-juego(project_zero,terror,2001).
-juego(half-life_2,accion,2004).
+juego(colin_mcRae_rally_04,coches,2004,any%,20). #Rally
+juego(colin_mcRae_rally_04,coches,2004,100%,54). #Championship
+juego(alan_wake,terror,2010,any%,153).
+juego(alan_wake,terror,2010,100%,0).
+
 
 #Año 11-...
 juego(super_mario_odyssey,plataforma,2018,any%,57).
