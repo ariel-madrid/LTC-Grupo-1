@@ -1,1 +1,0 @@
-LTC-Grupo-1
