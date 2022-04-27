@@ -57,8 +57,8 @@ juego("Kirby Squeak Squad","plataforma","2000","any","Media").
 juego("Kirby Squeak Squad","plataforma","2000","100","Media").
 juego("Sonic Rush","plataforma","2000","any","Corta").
 juego("Sonic Rush","plataforma","2000","100","Larga").
-juego("La leyenda de Spyro: la fuerza del dragón","plataforma","2000","any","Media").
-juego("La leyenda de Spyro:la fuerza del dragón","plataforma","2000","100","Media").
+juego("La leyenda de Spyro: la fuerza del dragon","plataforma","2000","any","Media").
+juego("La leyenda de Spyro:la fuerza del dragon","plataforma","2000","100","Media").
 juego("New Super Mario Bros. Wii","plataforma","2000","any","Corta").
 juego("New Super Mario Bros. Wii","plataforma","2000","100","Larga").
 juego("Mega Man ​​Xtreme","plataforma","2000","any","Corta").
