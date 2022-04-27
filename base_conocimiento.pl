@@ -32,8 +32,8 @@ juego("Gran Turismo","coches",1997,"any",92).
 juego("Gran Turismo","coches",1997,"100",0).
 juego("Mario Kart","coches",1992,"any",31).
 juego("Mario Kart","coches",1992,"100",29).
-juego("crash team racing",1999,"any",4).
-juego("crash team racing",1999,"100",126).
+juego("crash team racing","coches",1999,"any",4).
+juego("crash team racing","coches",1999,"100",126).
 juego("Metal Gear Solid","accion",1998,"any",35).
 juego("Metal Gear Solid","accion",1998,"100",60).
 juego("unreal tournament","accion",1999,"any",16).
@@ -44,16 +44,16 @@ juego("Virtua Tennis","deporte",1999,"any",0).
 juego("Virtua Tennis","deporte",1999,"100",2).
 
 % Año 00-10 %
-juego(Deus_Ex,accion,2000).
-juego(Call_of_Duty,accion,2003).
-juego(ICO,aventura,2002).
-juego(Sonic_Rush,plataforma,2005).
-juego(Pro_Evolution_Soccer_6,deporte,2006).
-juego(Project_Gotham_Tacing_4,coches,2007).
-juego(Colin_McRae_Rally_04,coches,2004).
-juego(Alan_Wake,terror,2010).
-juego(Project_Zero,terror,2001).
-juego(Half-Life_2,accion,2004).
+juego("Deus Ex",accion,2000).
+juego("Call of Duty",accion,2003).
+juego("ICO",aventura,2002).
+juego("Sonic Rush",plataforma,2005).
+juego("Pro Evolution Soccer 6",deporte,2006).
+juego("Project Gotham Racing 4",coches,2007).
+juego("Colin McRae Rally 04",coches,2004).
+juego("Alan Wake",terror,2010).
+juego("Project Zero",terror,2001).
+juego("Half Life 2",accion,2004).
 juego("Deus ex","accion",2000,"any%",30).
 juego("Deus ex","accion",2000,"100%",88).
 juego("Call of Duty","accion",2003,"any%",89).
