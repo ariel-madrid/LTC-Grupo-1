@@ -161,27 +161,4 @@ juego("DOOM","accion","10","any","Corta").
 juego("DOOM","accion","10","100","Larga").
 
 % Reglas %
-
-%Categoria-Decada-Habilidad-Tiempo%
-seleccionarJuegoCDHT(A,B,C,D,X) :- juego(X,A,B,C,D).
-
-%Categoria-Decada-Habilidad%
-seleccionarJuegoCDH(A,B,C,X) :- juego(X,A,B,C,_).
-
-%Categoria-Habilidad-Tiempo%
-seleccionarJuegoCHT(A,B,C,X) :- juego(X,A,_,B,C).
-
-%Decada-Habilidad-Tiempo%
-seleccionarJuegoDHT(A,B,C,X) :- juego(X,_,A,B,C).
-
-%Categoria-Habilidad%
-seleccionarJuegoCH(A,B,X) :- juego(X,A,_,B,_).
-
-%Habilidad-Tiempo%
-seleccionarJuegoHT(A,B,X) :- juego(X,_,_,A,B).
-
-%Decada-Habilidad%
-seleccionarJuegoDH(A,B,X) :- juego(X,_,A,B,_).
-
-%Habilidad%
-seleccionarJuegoH(A,X) :- juego(X,_,_,A,_).
+seleccionar(A,B,X) :- juego(X,A,_,B,_).
