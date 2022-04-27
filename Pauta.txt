@@ -19,3 +19,6 @@ Sugerencias:
 		- Record mundial en determinada categoria, ejemplo:
 		juego(super_mario_odyssey,plataforma,2018,57,any%).
 		juego(super_mario_odyssey,plataforma,2018,480,100%).
+
+
+Docs para el desarrollo del informe: https://docs.google.com/document/d/1WUAasX2IB9yn-QYAmI04pyUu0OZeNoZer0D61uhTK6Q/edit?usp=sharing
