@@ -9,7 +9,10 @@ prolog.consult("../base_conocimiento.pl")
 
 def capturarInformacion(combo,combo2,radioValue,combo3):
     juegos = []
-
+    categorias = []
+    speedrun = []
+    preferencias = []
+    tmp = 0
     preferenciaTiempo = combo.get()
     preferenciaDecada = combo2.get()
     preferenciaNivelHabilidad = radioValue.get()
@@ -17,6 +20,7 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
 
     #Dependiendo de las entradas a traves de la interfaz, se realizan diferentes consultas a la base de conocimientos.
     if (preferenciaNivelHabilidad == ""):
+        tmp = 1
         tkinter.messagebox.showinfo(message="Debe seleccionar un nivel de habilidad", title="Alerta")
     if (preferenciaTiempo == "Menos de 30 minutos"):
             preferenciaTiempo = "Corta"
@@ -37,84 +41,142 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
         preferenciaDecada = "Seleccione"
 
     if (preferenciaNivelHabilidad == "Novato"):
-        preferenciaNivelHabilidad = "any"
+        preferenciaNivelHabilidad = "ANY%"
     elif (preferenciaNivelHabilidad == "Experto"):
         preferenciaNivelHabilidad = "100"
     else:
         preferenciaNivelHabilidad = ""
 
     if (preferenciaCategoria == "Accion"):
-        preferenciaCategoria = "accion"
+        preferenciaCategoria = "Accion"
     elif (preferenciaCategoria == "Aventura"):
-        preferenciaCategoria = "aventura"
+        preferenciaCategoria = "Aventura"
     elif (preferenciaCategoria == "Plataforma"):
-        preferenciaCategoria = "plataforma"
+        preferenciaCategoria = "Plataforma"
     elif (preferenciaCategoria == "Deporte"):
-        preferenciaCategoria = "deporte"
+        preferenciaCategoria = "Deporte"
     elif (preferenciaCategoria == "Coches"):
-        preferenciaCategoria = "coches"
+        preferenciaCategoria = "Coches"
     elif (preferenciaCategoria == "Terror"):
-        preferenciaCategoria = "terror"
+        preferenciaCategoria = "Terror"
     else:
         preferenciaCategoria = "Seleccione"
         
     #En caso de que sean seleccionados todos los campos
     if (preferenciaTiempo != "Seleccione" and preferenciaDecada != "Seleccione" and preferenciaNivelHabilidad != "" and preferenciaCategoria != "Seleccione"):
-        
+        preferencias.append(preferenciaTiempo)
+        preferencias.append(preferenciaDecada)
+        preferencias.append(preferenciaNivelHabilidad)
+        preferencias.append(preferenciaCategoria)
         for consulta in prolog.query("seleccionarJuegoCDHT(" + '"'+preferenciaCategoria+'"' + "," + '"'+preferenciaDecada+'"' + "," '"'+preferenciaNivelHabilidad+'"' +","+'"'+preferenciaTiempo+'"' + ",X)"):
             juegos.append(consulta["X"])
+            categorias.append(preferenciaCategoria)
+            speedrun.append(preferenciaNivelHabilidad)
     #En caso de que se seleccione Categoria, Decada y Habilidad
     elif (preferenciaDecada != "Seleccione" and preferenciaNivelHabilidad != "" and preferenciaCategoria != "Seleccione" and preferenciaTiempo=="Seleccione"):
-        
+        preferencias.append(preferenciaDecada)
+        preferencias.append(preferenciaNivelHabilidad)
+        preferencias.append(preferenciaCategoria)
         for consulta in prolog.query("seleccionarJuegoCDH(" + '"'+preferenciaCategoria+'"' + "," + '"'+preferenciaDecada+'"' + "," '"'+preferenciaNivelHabilidad+'"' +",X)"):
             juegos.append(consulta["X"])
+            categorias.append(preferenciaCategoria)
+            speedrun.append(preferenciaNivelHabilidad)
     #En caso de que ingrese Decada, Habilidad, Tiempo.
     elif (preferenciaDecada != "Seleccione" and preferenciaNivelHabilidad != "" and preferenciaTiempo != "Seleccione" and preferenciaCategoria == "Seleccione"):
-        
-        for consulta in prolog.query("seleccionarJuegoDHT(" +'"'+preferenciaDecada+'"'+","+'"'+preferenciaNivelHabilidad+'"' +","+'"'+preferenciaTiempo+'"'+",X)"):
+        preferencias.append(preferenciaTiempo)
+        preferencias.append(preferenciaDecada)
+        preferencias.append(preferenciaNivelHabilidad)
+        for consulta in prolog.query("seleccionarJuegoDHT(" +'"'+preferenciaDecada+'"'+","+'"'+preferenciaNivelHabilidad+'"' +","+'"'+preferenciaTiempo+'"'+",X,Y)"):
             juegos.append(consulta["X"])
+            categorias.append(consulta["Y"])
+            speedrun.append(preferenciaNivelHabilidad)
     #En caso de que ingrese Categoria, Habilidad, Tiempo
     elif (preferenciaCategoria != "Seleccione" and preferenciaNivelHabilidad != "" and preferenciaTiempo != "Seleccione"):
-        
+        preferencias.append(preferenciaTiempo)
+        preferencias.append(preferenciaNivelHabilidad)
+        preferencias.append(preferenciaCategoria)
         for consulta in prolog.query("seleccionarJuegoCHT(" +'"'+preferenciaCategoria+'"'+","+'"'+preferenciaNivelHabilidad+'"' +","+'"'+preferenciaTiempo+'"'+",X)"):
             juegos.append(consulta["X"])
+            categorias.append(preferenciaCategoria)
+            speedrun.append(preferenciaNivelHabilidad)
     #En caso que se seleccion Categoria y Habilidad
     elif (preferenciaCategoria != "Seleccione" and preferenciaNivelHabilidad != "" and preferenciaDecada == "Seleccione" and preferenciaTiempo == "Seleccione"):
-        
+        preferencias.append(preferenciaNivelHabilidad)
+        preferencias.append(preferenciaCategoria)
         for consulta in prolog.query("seleccionarJuegoCH(" + '"'+preferenciaCategoria+'"' + "," + '"'+preferenciaNivelHabilidad+'"' +",X)"):
             juegos.append(consulta["X"])
+            categorias.append(preferenciaCategoria)
+            speedrun.append(preferenciaNivelHabilidad)
     #En caso de que ingrese Decada, Habilidad.
     elif (preferenciaDecada != "Seleccione" and preferenciaNivelHabilidad != "" and preferenciaTiempo == "Seleccione" and preferenciaCategoria == "Seleccione"):
-    
-        for consulta in prolog.query("seleccionarJuegoDH(" +'"'+preferenciaDecada+'"'+","+'"'+preferenciaNivelHabilidad+'"' +",X)"):
+        preferencias.append(preferenciaDecada)
+        preferencias.append(preferenciaNivelHabilidad)
+        for consulta in prolog.query("seleccionarJuegoDH(" +'"'+preferenciaDecada+'"'+","+'"'+preferenciaNivelHabilidad+'"' +",X,Y)"):
             juegos.append(consulta["X"])
+            categorias.append(consulta["Y"])
+            speedrun.append(preferenciaNivelHabilidad)
     #En caso de que ingrese Habilidad, Tiempo.
     elif (preferenciaDecada == "Seleccione" and preferenciaNivelHabilidad != "" and preferenciaTiempo != "Seleccione" and preferenciaCategoria == "Seleccione"):
-        
-        for consulta in prolog.query("seleccionarJuegoHT(" +'"'+preferenciaNivelHabilidad+'"'+","+'"'+preferenciaTiempo+'"' +",X)"):
+        preferencias.append(preferenciaTiempo)
+        preferencias.append(preferenciaNivelHabilidad)
+        for consulta in prolog.query("seleccionarJuegoHT(" +'"'+preferenciaNivelHabilidad+'"'+","+'"'+preferenciaTiempo+'"' +",X,Y)"):
             juegos.append(consulta["X"])
+            categorias.append(consulta["Y"])
+            speedrun.append(preferenciaNivelHabilidad)
     #En caso que solo se seleccione Habilidad
     elif (preferenciaNivelHabilidad != "" and preferenciaCategoria == "Seleccione" and preferenciaDecada == "Seleccione" and preferenciaTiempo == "Seleccione"):
-        
-        for consulta in prolog.query("seleccionarJuegoH(" +'"'+preferenciaNivelHabilidad+'"' +",X)"):
+        preferencias.append(preferenciaNivelHabilidad)
+        for consulta in prolog.query("seleccionarJuegoH(" +'"'+preferenciaNivelHabilidad+'"' +",X,Y)"):
             juegos.append(consulta["X"])
+            categorias.append(consulta["Y"])
+            speedrun.append(preferenciaNivelHabilidad)
 
-    if(len(juegos) == 0):
+    if(len(juegos) < 3 and tmp!=1):
+        juegos = []
         #En caso que se seleccion Categoria y Habilidad
         if (preferenciaCategoria != "Seleccione" and preferenciaNivelHabilidad != ""):
             
             for consulta in prolog.query("seleccionarJuegoCH(" + '"'+preferenciaCategoria+'"' + "," + '"'+preferenciaNivelHabilidad+'"' +",X)"):
                 juegos.append(consulta["X"])
+                categorias.append(preferenciaCategoria)
+                speedrun.append(preferenciaNivelHabilidad)
         #En caso que solo se seleccione Habilidad
         elif (preferenciaNivelHabilidad != ""):
             
-            for consulta in prolog.query("seleccionarJuegoH(" +'"'+preferenciaNivelHabilidad+'"' +",X)"):
+            for consulta in prolog.query("seleccionarJuegoH(" +'"'+preferenciaNivelHabilidad+'"' +",X,Y)"):
                 juegos.append(consulta["X"])
-        mensaje = juegos
-    else:
-        mensaje = juegos
+                categorias.append(consulta["Y"])
+                speedrun.append(preferenciaNivelHabilidad)
 
-    tkinter.messagebox.showinfo(message=mensaje, title="Resultados")
+    if (len(juegos)>3):
+        juegos = juegos[0:3]
+        categorias = categorias[0:3]
+        speedrun = speedrun[0:3]
+
+    # Ventana que muestra los juegos.
+    recomendaciones = tkinter.Tk()
+    recomendaciones.geometry("800x250")
+    recomendaciones.resizable(0, 0)
+    recomendaciones.title("Recomendacion de Videojuegos")
+
+    mensaje = tkinter.Label(recomendaciones, text="Los siguientes juegos le van a gustar", bg="#88cffa")
+    mensaje.place(x=200,y=10)
+
+    columnas = ("Juego", "Categoria","Modo SpeedRun")
+    treeview = ttk.Treeview(recomendaciones,height=10, show="headings", columns=columnas)
+
+    treeview.column("Juego", width=300, anchor='center')
+    treeview.column("Categoria", width=100, anchor='center')
+    treeview.column("Modo SpeedRun", width=100, anchor='center')
+
+    treeview.heading("Juego", text="Juego")
+    treeview.heading("Categoria", text="Categoria")
+    treeview.heading("Modo SpeedRun", text="Modo SpeedRun")
+
+    for i in range(len(juegos)):
+        treeview.insert('',i,values=(juegos[i],categorias[i],speedrun[i]))
+
+    treeview.pack()
 
 def ingresoSistema(inputNombre,ventana):
     nombre = str(inputNombre.get())
@@ -147,7 +209,7 @@ def ingresoSistema(inputNombre,ventana):
     decada.place(x=50, y=120)
 
     combo2 = ttk.Combobox()
-    combo2 = ttk.Combobox(state="readonly",values=["1990-1999","2000-2009","2010-2029","No es relevante"])
+    combo2 = ttk.Combobox(state="readonly",values=["1990-1999","2000-2009","2010-2019","No es relevante"])
     combo2.set("Seleccione")
     combo2.place(x=50, y=145)
 
