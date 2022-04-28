@@ -82,28 +82,28 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
     #1
     if (preferenciaCategoria != "Seleccione" and preferenciaDecada != "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo == "Seleccione"):
         
-        for consulta in prolog.query("juego("+"X," + '"'+a+'"' + "," + '"'+b+'"' + "," + '"'+c+'"'+ "," + "_" +")"):
+        for consulta in prolog.query("juego("+"X," + "'"+a+"'" + "," + '"'+b+'"' + "," + '"'+c+'"'+ "," + "_" +")"):
             juegos.append(consulta["X"])
             categorias.append(a)
             speedrun.append(c)
     #2
     elif (preferenciaCategoria != "Seleccione" and preferenciaDecada == "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo != "Seleccione"):
     
-        for consulta in prolog.query("juego("+"X," + '"'+a+'"' + "," + "_" + "," + '"'+c+'"' + "," + '"'+d+'"' +")"):
+        for consulta in prolog.query("juego("+"X," + "'"+a+"'" + "," + "_" + "," + '"'+c+'"' + "," + '"'+d+'"' +")"):
             juegos.append(consulta["X"])
             categorias.append(a)
             speedrun.append(c)
     #3
     elif (preferenciaCategoria == "Seleccione" and preferenciaDecada != "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo != "Seleccione"):
-    
-        for consulta in prolog.query("juego("+"X," + "Y" + "," + '"'+b+'"' + "," + '"'+c+'"' + "," + '"'+d+'"' +")"):
+        print("juego("+"X," + 'Y' + "," + '"'+b+'"' + "," + '"'+c+'"' + "," + '"'+d+'"' +")")
+        for consulta in prolog.query("juego("+"X," + 'Y' + "," + '"'+b+'"' + "," + '"'+c+'"' + "," + '"'+d+'"' +")"):
             juegos.append(consulta["X"])
             categorias.append(consulta["Y"])
             speedrun.append(c)
     #4
     elif (preferenciaCategoria != "Seleccione" and preferenciaDecada == "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo == "Seleccione"):
-    
-        for consulta in prolog.query("juego("+"X," +'"'+a+'"'  + "," + "_" + "," + '"'+c+'"' + "," + "_" +")"):
+
+        for consulta in prolog.query("juego("+"X," +"'"+a+"'"  + "," + "_" + "," + '"'+c+'"' + "," + "_" +")"):
             juegos.append(consulta["X"])
             categorias.append(a)
             speedrun.append(c)
@@ -111,7 +111,7 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
     #5
     elif (preferenciaCategoria == "Seleccione" and preferenciaDecada != "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo == "Seleccione"):
     
-        for consulta in prolog.query("juego("+"X," + "Y" + "," + '"'+b+'"' + "," + '"'+c+'"' + "," + "_" +")"):
+        for consulta in prolog.query("juego("+"X," + 'Y' + "," + '"'+b+'"' + "," + '"'+c+'"' + "," + "_" +")"):
             juegos.append(consulta["X"])
             categorias.append(consulta["Y"])
             speedrun.append(c)
@@ -119,36 +119,36 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
     #6
     elif (preferenciaCategoria == "Seleccione" and preferenciaDecada == "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo != "Seleccione"):
     
-        for consulta in prolog.query("juego("+"X," + "Y" + "," + "_" + "," + '"'+c+'"' + "," + '"'+d+'"' +")"):
+        for consulta in prolog.query("juego("+"X," + 'Y' + "," + "_" + "," + '"'+c+'"' + "," + '"'+d+'"' +")"):
             juegos.append(consulta["X"])
             categorias.append(consulta["Y"])
             speedrun.append(c)
     #7
     elif (preferenciaCategoria == "Seleccione" and preferenciaDecada == "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo == "Seleccione"):
-    
-        for consulta in prolog.query("juego("+"X," + "Y" + "," + "_" + "," + '"'+c+'"' + "," + "_" +")"):
+        print("juego("+"X," + 'Y' + "," + "_" + "," + '"'+c+'"' + "," + "_" +")")
+        for consulta in prolog.query("juego("+"X," + 'Y' + "," + "_" + "," + '"'+c+'"' + "," + "_" +")"):
             juegos.append(consulta["X"])
             categorias.append(consulta["Y"])
             speedrun.append(c)
 
     #8
     elif (preferenciaCategoria != "Seleccione" and preferenciaDecada != "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo != "Seleccione"):
-        
-        for consulta in prolog.query("juego("+"X," + '"'+a+'"' + "," + '"'+b+'"' + "," + '"'+c+'"' + "," + '"'+d+'"' +")"):
+
+        for consulta in prolog.query("juego("+"X," + "'"+a+"'" + "," + '"'+b+'"' + "," + '"'+c+'"' + "," + '"'+d+'"' +")"):
             juegos.append(consulta["X"])
             categorias.append(a)
             speedrun.append(c)
 
     #Si no se encuentran juegos para las preferencias
-    if (len(juegos) < 3 and tmp!=1):
+    if (len(juegos) < 1 and tmp!=1):
         juegos = []
         # En caso que se seleccion Categoria y Habilidad
         if (preferenciaCategoria != "Seleccione" and preferenciaNivelHabilidad != ""):
-
-            for consulta in prolog.query("juego("+"X," +'"'+a+'"'  + "," + "_" + "," + '"'+c+'"' + "," + "_" +")"):
+            for consulta in prolog.query("juego("+"X," +"'"+a+"'"  + "," + "_" + "," + '"'+c+'"' + "," + "_" +")"):
                 juegos.append(consulta["X"])
                 categorias.append(a)
                 speedrun.append(c)
+
             tkinter.messagebox.showinfo(
                 message="No se encontraron juegos para sus preferencias.\nSe recomiendan los siguientes para las preferencias: \n\n- "
                         + preferenciaNivelHabilidad + "\n\n- " + preferenciaCategoria,
@@ -156,7 +156,7 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
         # En caso que solo se seleccione Habilidad
         elif (preferenciaNivelHabilidad != ""):
 
-            for consulta in prolog.query("juego("+"X," + "Y" + "," + "_" + "," + '"'+c+'"' + "," + "_" +")"):
+            for consulta in prolog.query("juego("+"X," + 'Y' + "," + "_" + "," + '"'+c+'"' + "," + "_" +")"):
                 juegos.append(consulta["X"])
                 categorias.append(consulta["Y"])
                 speedrun.append(preferenciaNivelHabilidad)
