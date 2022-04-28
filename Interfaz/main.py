@@ -35,7 +35,7 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
         preferenciaDecada = "90"
     elif (preferenciaDecada == "2000-2009"):
         preferenciaDecada = "2000"
-    elif (preferenciaDecada == "2010-2029"):
+    elif (preferenciaDecada == "2010-2019"):
         preferenciaDecada = "10"
     else:
         preferenciaDecada = "Seleccione"
@@ -81,28 +81,27 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
 
     #1
     if (preferenciaCategoria != "Seleccione" and preferenciaDecada != "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo == "Seleccione"):
-        
+
         for consulta in prolog.query("juego("+"X," + "'"+a+"'" + "," + '"'+b+'"' + "," + '"'+c+'"'+ "," + "_" +")"):
             juegos.append(consulta["X"])
             categorias.append(a)
             speedrun.append(c)
     #2
     elif (preferenciaCategoria != "Seleccione" and preferenciaDecada == "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo != "Seleccione"):
-    
+
         for consulta in prolog.query("juego("+"X," + "'"+a+"'" + "," + "_" + "," + '"'+c+'"' + "," + '"'+d+'"' +")"):
             juegos.append(consulta["X"])
             categorias.append(a)
             speedrun.append(c)
     #3
     elif (preferenciaCategoria == "Seleccione" and preferenciaDecada != "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo != "Seleccione"):
-        print("juego("+"X," + 'Y' + "," + '"'+b+'"' + "," + '"'+c+'"' + "," + '"'+d+'"' +")")
+
         for consulta in prolog.query("juego("+"X," + 'Y' + "," + '"'+b+'"' + "," + '"'+c+'"' + "," + '"'+d+'"' +")"):
             juegos.append(consulta["X"])
             categorias.append(consulta["Y"])
             speedrun.append(c)
     #4
-    elif (preferenciaCategoria != "Seleccione" and preferenciaDecada == "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo == "Seleccione"):
-
+    elif (preferenciaCategoria != "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo == "Seleccione" and preferenciaDecada == "Seleccione"):
         for consulta in prolog.query("juego("+"X," +"'"+a+"'"  + "," + "_" + "," + '"'+c+'"' + "," + "_" +")"):
             juegos.append(consulta["X"])
             categorias.append(a)
@@ -110,7 +109,7 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
 
     #5
     elif (preferenciaCategoria == "Seleccione" and preferenciaDecada != "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo == "Seleccione"):
-    
+
         for consulta in prolog.query("juego("+"X," + 'Y' + "," + '"'+b+'"' + "," + '"'+c+'"' + "," + "_" +")"):
             juegos.append(consulta["X"])
             categorias.append(consulta["Y"])
@@ -118,14 +117,14 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
 
     #6
     elif (preferenciaCategoria == "Seleccione" and preferenciaDecada == "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo != "Seleccione"):
-    
+
         for consulta in prolog.query("juego("+"X," + 'Y' + "," + "_" + "," + '"'+c+'"' + "," + '"'+d+'"' +")"):
             juegos.append(consulta["X"])
             categorias.append(consulta["Y"])
             speedrun.append(c)
     #7
     elif (preferenciaCategoria == "Seleccione" and preferenciaDecada == "Seleccione" and preferenciaNivelHabilidad != "Seleccione" and preferenciaTiempo == "Seleccione"):
-        print("juego("+"X," + 'Y' + "," + "_" + "," + '"'+c+'"' + "," + "_" +")")
+
         for consulta in prolog.query("juego("+"X," + 'Y' + "," + "_" + "," + '"'+c+'"' + "," + "_" +")"):
             juegos.append(consulta["X"])
             categorias.append(consulta["Y"])
