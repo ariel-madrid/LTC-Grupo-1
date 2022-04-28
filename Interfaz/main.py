@@ -99,10 +99,20 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
         for consulta in prolog.query("seleccionarJuegoH(" +'"'+preferenciaNivelHabilidad+'"' +",X)"):
             juegos.append(consulta["X"])
 
-    if(len(juegos) != 0):
+    if(len(juegos) == 0):
+        #En caso que se seleccion Categoria y Habilidad
+        if (preferenciaCategoria != "Seleccione" and preferenciaNivelHabilidad != ""):
+            
+            for consulta in prolog.query("seleccionarJuegoCH(" + '"'+preferenciaCategoria+'"' + "," + '"'+preferenciaNivelHabilidad+'"' +",X)"):
+                juegos.append(consulta["X"])
+        #En caso que solo se seleccione Habilidad
+        elif (preferenciaNivelHabilidad != ""):
+            
+            for consulta in prolog.query("seleccionarJuegoH(" +'"'+preferenciaNivelHabilidad+'"' +",X)"):
+                juegos.append(consulta["X"])
         mensaje = juegos
     else:
-        mensaje = "No se encontraron juegos para su solicitud"
+        mensaje = juegos
 
     tkinter.messagebox.showinfo(message=mensaje, title="Resultados")
 
