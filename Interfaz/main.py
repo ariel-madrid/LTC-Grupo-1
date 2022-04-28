@@ -99,7 +99,13 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
         for consulta in prolog.query("seleccionarJuegoH(" +'"'+preferenciaNivelHabilidad+'"' +",X)"):
             juegos.append(consulta["X"])
 
-    tkinter.messagebox.showinfo(message=juegos, title="Alerta")
+    if(len(juegos) != 0):
+        mensaje = juegos
+    else:
+        mensaje = "No se encontraron juegos para su solicitud"
+
+    tkinter.messagebox.showinfo(message=mensaje, title="Resultados")
+
 def ingresoSistema(inputNombre,ventana):
     nombre = str(inputNombre.get())
     ventana.destroy()
