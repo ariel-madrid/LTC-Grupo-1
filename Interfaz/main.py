@@ -4,6 +4,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from pyswip import *
 
+
 prolog = Prolog()
 prolog.consult("../base_conocimiento.pl")
 
@@ -201,9 +202,9 @@ def ingresoSistema(inputNombre,ventana):
     selecciones.title("Seleccion de preferencias")
 
     #Cargar imagen para el fondo
-    space = tkinter.PhotoImage( file = "./img/space.png")
-    small_img=space.subsample(1,1)
-    background = tkinter.Label(selecciones, image=small_img)
+    space = tkinter.PhotoImage( file = "./img/fondo4.png")
+    #small_img=space.subsample(1,1)
+    background = tkinter.Label(selecciones, image=space)
     background.space = space 
     background.place(x=0,y=0)
 
@@ -284,4 +285,5 @@ def root():
     ventana.mainloop()
 
 if __name__ == "__main__":
+    
     root()
