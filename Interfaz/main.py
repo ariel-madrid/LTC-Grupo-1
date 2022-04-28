@@ -164,9 +164,9 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
         juegos = juegos[0:3]
         categorias = categorias[0:3]
         speedrun = speedrun[0:3]
-        tkinter.messagebox.showinfo(message="Los siguientes juegos le van a gustar",title="Recomendaciones")
     if (tmp != 1):
-        # Ventana que muestra los juegos.
+        tkinter.messagebox.showinfo(message="Los siguientes juegos le van a gustar",title="Recomendaciones")
+        # Ventana que muestra los juegos.}
         recomendaciones = tkinter.Tk()
         recomendaciones.geometry("800x250")
         recomendaciones.resizable(0, 0)
