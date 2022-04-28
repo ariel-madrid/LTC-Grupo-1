@@ -43,7 +43,7 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
     if (preferenciaNivelHabilidad == "Novato"):
         preferenciaNivelHabilidad = "ANY%"
     elif (preferenciaNivelHabilidad == "Experto"):
-        preferenciaNivelHabilidad = "100"
+        preferenciaNivelHabilidad = "100%"
     else:
         preferenciaNivelHabilidad = ""
 
