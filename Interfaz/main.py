@@ -195,6 +195,9 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
 
         treeview.pack()
 
+def stopMusic():
+    p.terminate()
+
 def ingresoSistema(inputNombre,ventana):
     p.start()
 
@@ -261,6 +264,9 @@ def ingresoSistema(inputNombre,ventana):
     enviar = tkinter.Button(selecciones,text="Consultar",command=lambda: capturarInformacion(combo,combo2,radioValue,combo3))
     enviar.place(x=510, y=340)
 
+    apagar = tkinter.Button(selecciones, text="Apagar Música",command=lambda: stopMusic())
+    apagar.place(x=50, y=340)
+    
 def root():
     
     #Crear ventana
@@ -295,5 +301,4 @@ def root():
     ventana.mainloop()
 
 if __name__ == "__main__":
-    
     root()
