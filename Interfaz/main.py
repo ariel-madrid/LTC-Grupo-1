@@ -3,10 +3,12 @@ import tkinter
 from tkinter import ttk
 from tkinter import messagebox
 from pyswip import *
-
+from playsound import playsound
+import multiprocessing
 
 prolog = Prolog()
 prolog.consult("../base_conocimiento.pl")
+p = multiprocessing.Process(target=playsound, args=("mario.mp3",))
 
 def capturarInformacion(combo,combo2,radioValue,combo3):
     juegos = []
@@ -166,6 +168,7 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
         categorias = categorias[0:3]
         speedrun = speedrun[0:3]
     if (tmp != 1):
+        p.terminate()
         tkinter.messagebox.showinfo(message="Los siguientes juegos le van a gustar",title="Recomendaciones")
         # Ventana que muestra los juegos.}
         recomendaciones = tkinter.Tk()
@@ -193,7 +196,14 @@ def capturarInformacion(combo,combo2,radioValue,combo3):
         treeview.pack()
 
 def ingresoSistema(inputNombre,ventana):
+    p.start()
+
     nombre = str(inputNombre.get())
+
+    if (nombre == ""):
+        tkinter.messagebox.showinfo(message="Debe ingresar un nombre", title="Alerta")
+        return
+
     ventana.destroy()
 
     selecciones =  tkinter.Tk()
