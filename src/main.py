@@ -7,7 +7,7 @@ from playsound import playsound
 import multiprocessing
 
 prolog = Prolog()
-prolog.consult("../base_conocimiento.pl")
+prolog.consult("base_conocimiento.pl")
 p = multiprocessing.Process(target=playsound, args=("mario.mp3",))
 
 def capturarInformacion(combo,combo2,radioValue,combo3):
