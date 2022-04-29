@@ -199,14 +199,12 @@ def stopMusic():
     p.terminate()
 
 def ingresoSistema(inputNombre,ventana):
-    p.start()
-
     nombre = str(inputNombre.get())
 
     if (nombre == ""):
         tkinter.messagebox.showinfo(message="Debe ingresar un nombre", title="Alerta")
         return
-
+    p.start()
     ventana.destroy()
 
     selecciones =  tkinter.Tk()
@@ -266,7 +264,7 @@ def ingresoSistema(inputNombre,ventana):
 
     apagar = tkinter.Button(selecciones, text="Apagar Música",command=lambda: stopMusic())
     apagar.place(x=50, y=340)
-    
+
 def root():
     
     #Crear ventana
