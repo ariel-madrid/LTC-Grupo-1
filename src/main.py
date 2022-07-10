@@ -337,7 +337,7 @@ def escogerCategoria(exp_value, time_value, dec_value):
     decada = control.Antecedent(x_decada,"Decada")
     categoria = control.Consequent(x_categoria,"Categoria",'centroid')
 
-    # Funciones de membresia
+    # Funciones de pertenencia
     experiencia["Novato"] = fuzz.trimf(x_experiencia, [0, 0, 5])
     experiencia["Experto"] = fuzz.trimf(x_experiencia, [5, 10, 10])
 

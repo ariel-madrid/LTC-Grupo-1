@@ -1,0 +1,190 @@
+Super mario world,Plataforma,90,ANY%,Media
+Super mario world,Plataforma,90,100%,Media
+Rayman,Plataforma,90,ANY%,Media
+Rayman,Plataforma,90,100%,Media
+Sonic the Hedgehog,Plataforma,90,ANY%,Corta
+Sonic the Hedgehog,Plataforma,90,100%,Media
+Spyro 2: Riptos Rage!,Plataforma,90,ANY%,Corta
+Spyro 2: Riptos Rage!,Plataforma,90,100%,Larga
+Donkey Kong Country,Plataforma,90,ANY%,Corta
+Donkey Kong Country,Plataforma,90,100%,Media
+Donkey Kong 64,Plataforma,90,ANY%,Corta
+Donkey Kong 64,Plataforma,90,100%,Larga
+Donkey Kong Country 2: Diddys Kong Quest,Plataforma,90,ANY%,Corta
+Donkey Kong Country 2: Diddys Kong Quest,Plataforma,90,100%,Larga
+Resident Evil,Terror,90,ANY%,Larga
+Resident Evil,Terror,90,100%,Media
+Silent Hill,Terror,90,ANY%,Corta
+Silent Hill,Terror,90,100%,Media
+Ultimate Doom,Terror,90,ANY%,Corta
+Ultimate Doom,Terror,90,100%,Corta
+Final Fantasy VII,Aventura,90,ANY%,Larga
+Final Fantasy VII,Aventura,90,100%,Larga
+The Legend of Zelda: Ocarina of Time,Aventura,90,ANY%,Corta
+The Legend of Zelda: Ocarina of Time,Aventura,90,100%,Larga
+Soulcalibur,Aventura,90,100%,Larga
+Soulcalibur,Aventura,90,ANY%,Corta
+Ninja Gaiden,Aventura,90,ANY%,Corta
+Ninja Gaiden,Aventura,90,100%,Larga
+Pokemon Snap,Aventura,90,ANY%,Corta
+Pokemon Snap,Aventura,90,100%,Corta
+Gran Turismo,Coches,90,ANY%,Larga
+Gran Turismo,Coches,90,100%,Corta
+Mario Kart,Coches,90,ANY%,Media
+Mario Kart,Coches,90,100%,Corta
+Crash Team Racing,Coches,90,ANY%,Corta
+Crash Team Racing,Coches,90,100%,Larga
+Diddy Kong Racing,Coches,90,ANY%,Media
+Diddy Kong Racing,Coches,90,100%,Larga
+Metal Gear Solid,Accion,90,ANY%,Media
+Metal Gear Solid,Accion,90,100%,Media
+Unreal Tournament,Accion,90,ANY%,Corta
+Unreal Tournament,Accion,90,100%,Larga
+Metal Slug,Accion,90,ANY%,Corta
+Metal Slug,Accion,90,100%,Corta
+Mega Man X,Accion,90,ANY%,Media
+Mega Man X,Accion,90,100%,Media
+Star Fox 64,Accion,90,ANY%,Corta
+Star Fox 64,Accion,90,100%,Media
+Virtua Tennis,Deporte,90,ANY%,Corta
+Virtua Tennis,Deporte,90,100%,Corta
+Deus ex,Accion,2000,ANY%,Media
+Deus ex,Accion,2000,100%,Media
+Call of Duty,Accion,2000,ANY%,Media
+Call of Duty,Accion,2000,100%,Larga
+Demons Souls,Accion,2000,ANY%,Media
+Demons Souls,Accion,2000,100%,Larga
+Xenoblade Chronicles,Accion,2000,ANY%,Larga
+Xenoblade Chronicles,Accion,2000,100%,Larga
+Kingdom Hearts,Accion,2000,ANY%,Larga
+Kingdom Hearts,Accion,2000,100%,Larga
+Metroid Fusion,Accion,2000,ANY%,Media
+Metroid Fusion,Accion,2000,100%,Larga
+Ico,Aventura,2000,ANY%,Larga
+Ico,Aventura,2000,100%,Larga
+Metal Gear Solid 2 Substance,Aventura,2000,ANY%,Media
+Metal Gear Solid 2 Substance,Aventura,2000,100%,Larga
+Metroid Prime: Hunters,Aventura,2000,ANY%,Media
+Metroid Prime: Hunters,Aventura,2000,100%,Larga
+Far Cry 2,Aventura,2000,ANY%,Larga
+Far Cry 2,Aventura,2000,100%,Corta
+Dragon Quest Heroes: Rocket Slime,Aventura,2000,ANY%,Larga
+Dragon Quest Heroes: Rocket Slime,Aventura,2000,100%,Larga
+Banjo-Tooie,Aventura,2000,ANY%,Corta
+Banjo-Tooie,Aventura,2000,100%,Larga
+The Legend of Zelda: The Minish Cap,Aventura,2000,ANY%,Media
+The Legend of Zelda: The Minish Cap,Aventura,2000,100%,Larga
+Kirby Squeak Squad,Plataforma,2000,ANY%,Media
+Kirby Squeak Squad,Plataforma,2000,100%,Media
+Sonic Rush,Plataforma,2000,ANY%,Corta
+Sonic Rush,Plataforma,2000,100%,Larga
+La leyenda de Spyro: la fuerza del dragon,Plataforma,2000,ANY%,Media
+La leyenda de Spyro: la fuerza del dragon,Plataforma,2000,100%,Media
+New Super Mario Bros. Wii,Plataforma,2000,ANY%,Corta
+New Super Mario Bros. Wii,Plataforma,2000,100%,Larga
+Mega Man Xtreme,Plataforma,2000,ANY%,Corta
+Mega Man Xtreme,Plataforma,2000,100%,Corta
+Super Meat Boy,Plataforma,2000,ANY%,Corta
+Super Meat Boy,Plataforma,2000,100%,Media
+Super Monkey Ball,Plataforma,2000,ANY%,Corta
+Super Monkey Ball,Plataforma,2000,100%,Media
+Pro Evolution Soccer 6,Deporte,2000,ANY%,Larga
+Pro Evolution Soccer 6,Deporte,2000,100%,Corta
+Punch-Out!!,Deporte,2000,ANY%,Corta
+Punch-Out!!,Deporte,2000,100%,Corta
+Dave Mirra Freestyle BMX,Deporte,2000,ANY%,Corta
+Dave Mirra Freestyle BMX,Deporte,2000,100%,Media
+Kelly Slaters Pro Surfer,Deporte,2000,ANY%,Media
+Kelly Slaters Pro Surfer,Deporte,2000,100%,Corta
+Xtreme Sports,Deporte,2000,ANY%,Corta
+Xtreme Sports,Deporte,2000,100%,Corta
+Project gotham racing 4,Coches,2000,ANY%,Larga
+Project gotham racing 4,Coches,2000,100%,Corta
+Colin McRae Rally 04,Coches,2000,ANY%,Corta
+Colin McRae Rally 04,Coches,2000,100%,Media
+Need for speed: Most wanted,Coches,2000,ANY%,Larga
+Need for speed: Most wanted,Coches,2000,100%,Larga
+Need for speed: Carbon,Coches,2000,ANY%,Larga
+Need for speed: Carbon,Coches,2000,100%,Larga
+Diddy Kong Racing DS,Coches,2000,ANY%,Larga
+Diddy Kong Racing DS,Coches,2000,100%,Larga
+Alan Wake,Terror,2000,ANY%,Larga
+Alan Wake,Terror,2000,100%,Corta
+Left 4 Dead 2,Terror,2000,ANY%,Media
+Left 4 Dead 2,Terror,2000,100%,Larga
+The House of the Dead 4,Terror,2000,ANY%,Corta
+The House of the Dead 4,Terror,2000,100%,Corta
+Red Dead Redemption: Undead Nightmare,Terror,2000,ANY%,Media
+Red Dead Redemption: Undead Nightmare,Terror,2000,100%,Larga
+BioShock,Terror,2000,ANY%,Corta
+BioShock,Terror,2000,100%,Media
+Penumbra: Black Plague,Terror,2000,ANY%,Corta
+Penumbra: Black Plague,Terror,2000,100%,Corta
+Super Mario Odyssey,Plataforma,10,ANY%,Media
+Super Mario Odyssey,Plataforma,10,100%,Larga
+Ori and the Blind Forest,Plataforma,10,ANY%,Corta
+Ori and the Blind Forest,Plataforma,10,100%,Media
+What Remains of Edith Finch,Plataforma,10,ANY%,Media
+What Remains of Edith Finch,Plataforma,10,100%,Media
+Kirby: Star Allies,Plataforma,10,ANY%,Media
+Kirby: Star Allies,Plataforma,10,100%,Larga
+Super Mario 3D World,Plataforma,10,ANY%,Larga
+Super Mario 3D World,Plataforma,10,100%,Larga
+Geometry Dash,Plataforma,10,ANY%,Media
+Geometry Dash,Plataforma,10,100%,Media
+Cuphead,Plataforma,10,ANY%,Corta
+Cuphead,Plataforma,10,100%,Media
+Celeste,Plataforma,10,ANY%,Corta
+Celeste,Plataforma,10,100%,Larga
+Jump King,Plataforma,10,ANY%,Corta
+Jump King,Plataforma,10,100%,Media
+Elden Ring,Accion,10,ANY%,Corta
+Elden Ring,Accion,10,100%,Larga
+Bloodborne,Accion,10,ANY%,Corta
+Bloodborne,Accion,10,100%,Media
+Metroid Dread,Accion,10,ANY%,Media
+Metroid Dread,Accion,10,100%,Larga
+Grand Theft Auto V,Accion,10,ANY%%,Larga
+Grand Theft Auto V,Accion,10,100%,Larga
+Dark Souls III,Accion,10,ANY%,Media
+Dark Souls III,Accion,10,100%,Media
+Hollow Knight,Accion,10,ANY%,Media
+Hollow Knight,Accion,10,100%,Media
+DOOM,Accion,10,ANY%,Corta
+DOOM,Accion,10,100%,Larga
+Assassins Creed Odyssey,Aventura,10,ANY%,Larga
+Assassins Creed Odyssey,Aventura,10,100%,Larga
+The Legend of Zelda: Breath of the Wild,Aventura,10,ANY%,Corta
+The Legend of Zelda: Breath of the Wild,Aventura,10,100%,Larga
+The Witcher 3: Wild Hunt,Aventura,10,ANY%,Larga
+The Witcher 3: Wild Hunt,Aventura,10,100%,Larga
+Journey to the Savage Planet,Aventura,10,ANY%,Corta
+Journey to the Savage Planet,Aventura,10,100%,Larga
+Red Dead Redemption,Aventura,10,ANY%,Larga
+Red Dead Redemption,Aventura,10,100%,Larga
+Dead Space,Terror,10,ANY%,Media
+Dead Space,Terror,10,100%,Larga
+Outlast,Terror,10,ANY%,Corta
+Outlast,Terror,10,100%,Corta
+Resident Evil 3,Terror,10,ANY%,Media
+Resident Evil 3,Terror,10,100%,Media
+Five Nights at Freddys,Terror,10,ANY%,Media
+Five Nights at Freddys,Terror,10,100%,Media
+
+Forza Horizon 4,Coches,10,ANY%,Corta
+Forza Horizon 4,Coches,10,100%,Larga
+Need for Speed: Rivals,Coches,10,ANY%,Media
+Need for Speed: Rivals,Coches,10,100%,Larga
+Crash Team Racing Nitro Fueled,Coches,10,ANY%,Media
+Crash Team Racing Nitro Fueled,Coches,10,100%,Media
+
+Inazuma Eleven Strikers,Deporte,10,ANY%,Media
+Inazuma Eleven Strikers,Deporte,10,100%,Larga
+Mario Golf: Super Rush,Deporte,10,ANY%,Larga
+Mario Golf: Super Rush,Deporte,10,100%,Larga
+Mario Tennis Aces,Deporte,10,ANY%,Media
+Mario Tennis Aces,Deporte,10,100%,Media
+NBA 2k21,Deporte,10,ANY%,Corta
+NBA 2k21,Deporte,10,100%,Media
+Rocket League,Deporte,10,ANY%,Corta
+Rocket League,Deporte,10,100%,Media
