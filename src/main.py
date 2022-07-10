@@ -81,21 +81,9 @@ def capturarInformacion(combo,combo2,radioValue):
         num_exp = 0
 
     preferenciaCategoria = escogerCategoria(num_exp, num_time, num_dec)
-    
-    if (preferenciaCategoria == "Accion"):
-        preferenciaCategoria = "Accion"
-    elif (preferenciaCategoria == "Aventura"):
-        preferenciaCategoria = "Aventura"
-    elif (preferenciaCategoria == "Plataforma"):
-        preferenciaCategoria = "Plataforma"
-    elif (preferenciaCategoria == "Coches"):
-        preferenciaCategoria = "Coches"
-    elif (preferenciaCategoria == "Terror"):
-        preferenciaCategoria = "Terror"
-    else:
+    if (preferenciaCategoria == ""):
         preferenciaCategoria = "Seleccione"
 
-    
     ''''''
     '''
     POSIBLES COMBINACIONES DE ENTRADAS PARA LAS CONSULTAS DE PROLOG
@@ -380,7 +368,6 @@ def escogerCategoria(exp_value, time_value, dec_value):
     tiempo.view()
     decada.view()
     categoria.view()
-
     categoria.view(sim=categoriaSim)
 
     if(cat_value >= 0.0 and cat_value <= 6.5):
@@ -393,6 +380,8 @@ def escogerCategoria(exp_value, time_value, dec_value):
         categoria = "Aventura"
     elif(cat_value > 28.5 and cat_value < 33):
         categoria = "Terror"
+    else:
+        categoria = ""
         
     return categoria
 
