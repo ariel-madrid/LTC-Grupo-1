@@ -38,7 +38,7 @@ def leerJuegos():
             listaJuegos.append(Juego(informacion[0],informacion[1],informacion[2],informacion[3],informacion[4]))
     juegos.close()
 
-def obtenerCategoria(exp,time,dec):
+def obtenerCategoria(exp,time,dec,entradas):
     exp_value = exp
     time_value = time
     dec_value = dec
@@ -68,25 +68,28 @@ def obtenerCategoria(exp,time,dec):
 
 
     #Graficar funciones de pertenencia
-    fig1,(ax1,ax2,ax3,ax4) = plt.subplots(nrows=4,figsize=(15,9))
+    fig1,ax1 = plt.subplots(figsize=(6,5))
 
     ax1.plot(x_experiencia,experiencia_novato,'b',linewidth=1.5,label="Novato")
     ax1.plot(x_experiencia,experiencia_experto,'g',linewidth=1.5,label="Experto")
     ax1.set_title('Experiencia')
     ax1.legend()
 
+    fig2, ax2 = plt.subplots(figsize=(6, 5))
     ax2.plot(x_tiempo,tiempo_poco,'b',linewidth=1.5,label="Poco")
     ax2.plot(x_tiempo,tiempo_medio,'g',linewidth=1.5,label="Medio")
     ax2.plot(x_tiempo,tiempo_mucho,'r',linewidth=1.5,label="Mucho")
     ax2.set_title('Tiempo')
     ax2.legend()
 
+    fig3, ax3 = plt.subplots(figsize=(6, 5))
     ax3.plot(x_decada,decada_noventas,'b',linewidth=1.5,label="90s")
     ax3.plot(x_decada,decada_dosmil,'g',linewidth=1.5,label="00s")
     ax3.plot(x_decada, decada_dosmildiez, 'r', linewidth=1.5, label="2010s")
     ax3.set_title('Decada')
     ax3.legend()
 
+    fig4, ax4 = plt.subplots(figsize=(6, 5))
     ax4.plot(x_categoria, categoria_plataforma, 'b', linewidth=1.5, label="Plataforma")
     ax4.plot(x_categoria, categoria_terror, 'g', linewidth=1.5, label="Terror")
     ax4.plot(x_categoria, categoria_aventura, 'r', linewidth=1.5, label="Aventura")
@@ -96,6 +99,7 @@ def obtenerCategoria(exp,time,dec):
     ax4.legend()
 
     #Fuzzificar los valores de entrada
+
     exp_level_novato = fuzz.interp_membership(x_experiencia, experiencia_novato, exp_value)
     exp_level_experto = fuzz.interp_membership(x_experiencia, experiencia_experto, exp_value)
 
@@ -107,216 +111,208 @@ def obtenerCategoria(exp,time,dec):
     decada_level_dosmil = fuzz.interp_membership(x_decada, decada_dosmil, dec_value)
     decada_level_dosmildiez = fuzz.interp_membership(x_decada, decada_dosmildiez, dec_value)
 
-    #Evaluacion de las reglas
+    #Evaluacion de las reglas y Agregacion de las salidas de las reglas.
 
-    #Regla 1 -> tiempo["Poco"] & experiencia["Experto"] & decada["Noventas"], categoria["Terror"]
-    active_rule1 = np.fmin(tiempo_level_poco, np.fmin(exp_level_experto,decada_level_noventas))
-    categoria_activation_terror = np.fmin(active_rule1, categoria_terror)  # removed entirely to 0
+    # ---------------
+    #Reglas con 3 entradas:
+    if (entradas == 3):
+        #Regla 1 -> tiempo["Poco"] & experiencia["Experto"] & decada["Noventas"], categoria["Terror"]
+        active_rule1 = np.fmin(tiempo_level_poco, np.fmin(exp_level_experto,decada_level_noventas))
+        categoria_activation_terror = np.fmin(active_rule1, categoria_terror)  # removed entirely to 0
 
-    #Regla 2 -> tiempo["Mucho"] & experiencia["Novato"], categoria["Plataforma"]
-    active_rule2 = np.fmin(tiempo_level_mucho, exp_level_novato)
-    categoria_activation_plataforma = np.fmin(active_rule2,categoria_plataforma)
+        #Regla 2 -> tiempo["Mucho"] & decada["Dosmildiez"] & experiencia["Novato"] => Accion
+        active_rule13 = np.fmin(tiempo_level_mucho,np.fmin(decada_level_dosmildiez,exp_level_novato))
+        categoria_activation_accion3 = np.fmin(active_rule13,categoria_accion)
 
-    #Regla 3 -> tiempo["Medio"] & experiencia["Experto"] & decada["Dosmildiez"], categoria["Coches"]
-    active_rule3 = np.fmin(tiempo_level_medio, np.fmin(exp_level_experto,decada_level_dosmildiez))
-    categoria_activation_coches = np.fmin(active_rule3, categoria_coches)
+        #Regla 3 -> tiempo["Medio"] & experiencia["Experto"] & decada["Dosmildiez"], categoria["Coches"]
+        active_rule3 = np.fmin(tiempo_level_medio, np.fmin(exp_level_experto,decada_level_dosmildiez))
+        categoria_activation_coches = np.fmin(active_rule3, categoria_coches)
 
-    #Regla 4 -> tiempo["Medio"] & experiencia["Novato"], categoria["Aventura"]
-    active_rule4 = np.fmin(tiempo_level_medio, exp_level_novato)
-    categoria_activation_aventura = np.fmin(active_rule4, categoria_aventura)
+        #Regla 4 -> tiempo["Poco"] & experiencia["Experto"] & decada["Dosmil"], categoria["Plataforma"]
+        active_rule6 = np.fmin(tiempo_level_poco,np.fmin(exp_level_experto,decada_level_dosmil))
+        categoria_activation_plataforma3 = np.fmin(active_rule6, categoria_plataforma)
 
-    #Regla 5 -> (tiempo["Poco"] | experiencia["Novato"]) & decada["Noventas"], categoria["Plataforma"]
-    active_rule5 = np.fmin(np.fmax(tiempo_level_poco,exp_level_novato),decada_level_noventas)
-    categoria_activation_plataforma2 = np.fmin(active_rule5,categoria_plataforma)
+        #Regla 5 -> tiempo["Medio"] & decada["Dosmil"] & experiencia["Novato"], categoria["Aventura"]
+        active_rule12 = np.fmin(tiempo_level_medio,np.fmin(decada_level_dosmil,exp_level_novato))
+        categoria_activation_aventura3 = np.fmin(active_rule12,categoria_aventura)
 
-    #Regla 6 -> tiempo["Poco"] & experiencia["Experto"] & decada["Dosmil"], categoria["Plataforma"]
-    active_rule6 = np.fmin(tiempo_level_poco,np.fmin(exp_level_experto,decada_level_dosmil))
-    categoria_activation_plataforma3 = np.fmin(active_rule6, categoria_plataforma)
+        #Regla 6 -> tiempo["Poco"] & experiencia["Novato"] & decada["Noventas"], categoria["Aventura"]
+        active_rule10 = np.fmin(tiempo_level_poco,np.fmin(exp_level_novato,decada_level_noventas))
+        categoria_activation_aventura2 = np.fmin(active_rule10,categoria_aventura)
 
-    #Regla 7 -> tiempo["Mucho"] | experiencia["Experto"], categoria["Accion"]
-    active_rule7 = np.fmax(tiempo_level_mucho,exp_level_experto)
-    categoria_activation_accion = np.fmin(active_rule7,categoria_accion)
+        #Regla 7 -> tiempo["Poco"] & experiencia["Novato"] & decada["Dosmil"] => Coches
+        active_rule14 = np.fmin(tiempo_level_poco,np.fmin(exp_level_novato,decada_level_dosmil))
+        categoria_activation_coches3 = np.fmin(active_rule14,categoria_coches)
 
-    #Regla 8 -> tiempo["Poco"] & experiencia["Novato"], categoria["Plataforma"]
-    active_rule8 = np.fmin(tiempo_level_poco,exp_level_novato)
-    categoria_activation_plataforma4 = np.fmin(active_rule8,categoria_plataforma)
+        #Regla 8 -> tiempo["Mucho"] & experiencia["Experto"] & decada["Dosmildiez"] => Terror
+        active_rule15 = np.fmin(tiempo_level_mucho,np.fmin(exp_level_experto,decada_level_dosmildiez))
+        categoria_activation_terror2 = np.fmin(active_rule15,categoria_terror)
 
-    #Regla 9 -> tiempo["Mucho"] & experiencia["Experto"], categoria["Terror"]
-    active_rule9 = np.fmin(tiempo_level_mucho,exp_level_experto)
-    categoria_activation_accion2 = np.fmin(active_rule9,categoria_accion)
+        #Regla 9 -> tiempo["Mucho"] & experiencia["Experto"] & decada["Dosmil"] => Plataforma
+        active_rule16 = np.fmin(tiempo_level_mucho,np.fmin(exp_level_experto,decada_level_dosmil))
+        categoria_activation_plataforma5 = np.fmin(active_rule16,categoria_plataforma)
 
-    #Regla 10 -> tiempo["Poco"] & experiencia["Novato"] & decada["Noventas"], categoria["Aventura"]
-    active_rule10 = np.fmin(tiempo_level_poco,np.fmin(exp_level_novato,decada_level_noventas))
-    categoria_activation_aventura2 = np.fmin(active_rule10,categoria_aventura)
+        #Agregacion para 3 entradas
+        aggregated = np.fmax(categoria_activation_terror,
+                             np.fmax(categoria_activation_accion3,
+                                     np.fmax(categoria_activation_coches,
+                                             np.fmax(categoria_activation_plataforma3,
+                                                     np.fmax(categoria_activation_aventura3,
+                                                             np.fmax(categoria_activation_aventura2,
+                                                                     np.fmax(categoria_activation_coches3,
+                                                                             np.fmax(categoria_activation_terror2,categoria_activation_plataforma5))))))))
+    elif (entradas == 2):
+        #Reglas con 2 entradas:
 
-    #Regla 11 -> tiempo["Mucho"] | (experiencia["Experto"] & decada["Dosmil"]), categoria["Coches"]
-    active_rule11 = np.fmax(tiempo_level_mucho,np.fmin(exp_level_experto,decada_level_dosmil))
-    categoria_activation_coches2 = np.fmin(active_rule11,categoria_coches)
+        #Regla 10 -> tiempo["Mucho"] & experiencia["Novato"], categoria["Plataforma"]
+        active_rule2 = np.fmin(tiempo_level_mucho, exp_level_novato)
+        categoria_activation_plataforma = np.fmin(active_rule2,categoria_plataforma)
 
-    #Regla 12 -> tiempo["Medio"] & decada["Dosmil"] & experiencia["Novato"], categoria["Aventura"]
-    active_rule12 = np.fmin(tiempo_level_medio,np.fmin(decada_level_dosmil,exp_level_novato))
-    categoria_activation_aventura3 = np.fmin(active_rule12,categoria_aventura)
+        #Regla 11 -> tiempo["Medio"] & experiencia["Novato"], categoria["Aventura"]
+        active_rule4 = np.fmin(tiempo_level_medio, exp_level_novato)
+        categoria_activation_aventura = np.fmin(active_rule4, categoria_aventura)
 
-    #Regla 13 -> tiempo["Mucho"] & decada["Dosmildiez"] & experiencia["Novato"] => Accion
-    active_rule13 = np.fmin(tiempo_level_mucho,np.fmin(decada_level_dosmildiez,exp_level_experto))
-    categoria_activation_accion3 = np.fmin(active_rule13,categoria_accion)
+        #Regla 12 -> (tiempo["Poco"] | decada["Noventas"]) => experiencia["Novato"], categoria["Plataforma"]
+        active_rule5 = np.fmin(np.fmax(tiempo_level_poco,decada_level_noventas),exp_level_novato)
+        categoria_activation_plataforma2 = np.fmin(active_rule5,categoria_plataforma)
 
-    categoria0 = np.zeros_like(x_categoria)
+        #Regla 13 -> tiempo["Poco"] & experiencia["Novato"], categoria["Plataforma"]
+        active_rule8 = np.fmin(tiempo_level_poco,exp_level_novato)
+        categoria_activation_plataforma4 = np.fmin(active_rule8,categoria_plataforma)
 
-    # Agregacion de las salidas de las reglas.
-    aggregated = np.fmax(categoria_activation_accion,
-                         np.fmax(categoria_activation_plataforma,
-                                 np.fmax(categoria_activation_plataforma2,
-                                         np.fmax(categoria_activation_plataforma3,
-                                                 np.fmax(categoria_activation_plataforma4,
-                                                         np.fmax(categoria_activation_aventura,
-                                                                 np.fmax(categoria_activation_coches,
-                                                                         np.fmax(categoria_activation_terror,
-                                                                                np.fmax(categoria_activation_accion2,
-                                                                                        np.fmax(categoria_activation_aventura2,
-                                                                                                np.fmax(categoria_activation_coches2,
-                                                                                                        np.fmax(categoria_activation_aventura3,categoria_activation_accion3))))))))))))
+        #Regla 14 -> tiempo["Mucho"] & experiencia["Experto"], categoria["Terror"]
+        active_rule9 = np.fmin(tiempo_level_mucho,exp_level_experto)
+        categoria_activation_terror = np.fmin(active_rule9,categoria_terror)
 
-    # Defuzzificacion utilizando el centroide de area.
+        #Regla 15 -> (tiempo["Mucho"] |  decada["Dosmil"]) & (experiencia["Experto"], categoria["Coches"]
+        active_rule11 = np.fmin(np.fmax(tiempo_level_mucho,decada_level_dosmil),exp_level_experto)
+        categoria_activation_coches2 = np.fmin(active_rule11,categoria_coches)
+
+        aggregated = np.fmax(categoria_activation_plataforma,
+                             np.fmax(categoria_activation_aventura,
+                                     np.fmax(categoria_activation_plataforma2,
+                                                     np.fmax(categoria_activation_plataforma4,
+                                                             np.fmax(categoria_activation_terror,categoria_activation_coches2)))))
+    elif (entradas == 1):
+        #Regla 16 -> tiempo["Mucho"] | experiencia["Experto"], categoria["Accion"]
+        active_rule7 = np.fmax(tiempo_level_mucho,exp_level_experto)
+        categoria_activation_accion = np.fmin(active_rule7,categoria_accion)
+        aggregated = categoria_accion
+
+    # ---------------
+    #Defuzzificacion utilizando el centroide de area.
     categoria_valor = fuzz.defuzz(x_categoria, aggregated, 'centroid')
 
-    # Graficar resultados
-    fig, ax0 = plt.subplots(figsize=(8, 3))
-
-    ax0.fill_between(x_categoria, categoria0, categoria_activation_accion, facecolor='b', alpha=0.7)
-    ax0.plot(x_categoria, categoria_accion, 'b', linewidth=0.5, linestyle='--', )
-
-    ax0.fill_between(x_categoria, categoria0, categoria_activation_plataforma, facecolor='g', alpha=0.7)
-    ax0.plot(x_categoria, categoria_plataforma, 'g', linewidth=0.5, linestyle='--')
-
-    ax0.fill_between(x_categoria, categoria0, categoria_activation_plataforma2, facecolor='r', alpha=0.7)
-    ax0.plot(x_categoria, categoria_plataforma, 'r', linewidth=0.5, linestyle='--')
-
-    ax0.fill_between(x_categoria, categoria0, categoria_activation_plataforma3, facecolor='c', alpha=0.7)
-    ax0.plot(x_categoria, categoria_plataforma, 'b', linewidth=0.5, linestyle='--', )
-
-    ax0.fill_between(x_categoria, categoria0, categoria_activation_plataforma4, facecolor='k', alpha=0.7)
-    ax0.plot(x_categoria, categoria_plataforma, 'b', linewidth=0.5, linestyle='--', )
-
-    ax0.fill_between(x_categoria, categoria0, categoria_activation_coches, facecolor='k', alpha=0.7)
-    ax0.plot(x_categoria, categoria_coches, 'b', linewidth=0.5, linestyle='--', )
-
-    ax0.fill_between(x_categoria, categoria0, categoria_activation_aventura, facecolor='k', alpha=0.7)
-    ax0.plot(x_categoria, categoria_aventura, 'b', linewidth=0.5, linestyle='--', )
-
-    ax0.fill_between(x_categoria, categoria0, categoria_activation_terror, facecolor='k', alpha=0.7)
-    ax0.plot(x_categoria, categoria_terror, 'b', linewidth=0.5, linestyle='--', )
-    ax0.set_title('Actividad de pertenencia de salida')
-
-    for ax in (ax0,):
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
-        ax.get_xaxis().tick_bottom()
-        ax.get_yaxis().tick_left()
-
-    plt.tight_layout()
     # Grafica de valor defuzzificado
-
     categoria_activation = fuzz.interp_membership(x_categoria, aggregated, categoria_valor)
 
+    # ---------------
     fig, ax0 = plt.subplots(figsize=(8, 3))
-
+    categoria0 = np.zeros_like(x_categoria)
     ax0.plot(x_categoria, categoria_accion, 'b', linewidth=0.5, linestyle='--', )
     ax0.plot(x_categoria, categoria_plataforma, 'g', linewidth=0.5, linestyle='--')
     ax0.plot(x_categoria, categoria_coches, 'r', linewidth=0.5, linestyle='--')
     ax0.plot(x_categoria, categoria_aventura, 'r', linewidth=0.5, linestyle='--')
     ax0.plot(x_categoria, categoria_terror, 'r', linewidth=0.5, linestyle='--')
-
     ax0.fill_between(x_categoria, categoria0, aggregated, facecolor='Orange', alpha=0.7)
     ax0.plot([categoria_valor, categoria_valor], [0, categoria_activation], 'k', linewidth=1.5, alpha=0.9)
     ax0.set_title('Pertenencia agregada y linea de resultado')
 
+    # ---------------
     for ax in (ax0,):
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
         ax.get_xaxis().tick_bottom()
         ax.get_yaxis().tick_left()
-
     plt.tight_layout()
 
     return categoria_valor
 
 def capturarInformacion(combo1,combo2,radio):
+    #Se inicializan variables de utilidad.
+    entradas = 0
     num_exp = 0
     num_time = 0
     num_dec = 0
-    tmp = 0
 
-    preferenciaTiempo = combo1.get()
-
+    #---------------
     if (combo2.get() == "No es relevante" or combo2.get() == "Seleccione"):
         num_dec = randint(1990,2022)
         preferenciaDecada = 0
     else:
         preferenciaDecada = int(combo2.get())
+        entradas += 1
 
+    # ---------------
+    #Se asignan valores a las preferencias de entrada del usuario.
+    preferenciaTiempo = combo1.get()
     preferenciaNivelHabilidad = radio.get()
-
-    # Dependiendo de las entradas a traves de la interfaz, se realizan diferentes consultas a la base de conocimientos.
     if (preferenciaNivelHabilidad == ""):
         tkinter.messagebox.showinfo(message="Debe seleccionar un nivel de habilidad", title="Alerta")
-        tmp = 1
+        return
+
+    # ---------------
     if (preferenciaTiempo == "Menos de 30 minutos"):
         preferenciaTiempo = "Corta"  # Poner valor numerico
         num_time = 14.5
-
+        entradas += 1
     elif (preferenciaTiempo == "Entre 30 y 90 minutos"):
         preferenciaTiempo = "Media"
         num_time = 40
-
+        entradas += 1
     elif (preferenciaTiempo == "Más de 90 minutos"):
         preferenciaTiempo = "Larga"
         num_time = 100
+        entradas += 1
     else:
         preferenciaTiempo = "Seleccione"
-        num_time = 1
+        num_time = -1
 
+    # ---------------
     if (preferenciaDecada >= 1990 and preferenciaDecada < 2000):
         num_dec = preferenciaDecada
         preferenciaDecada = "90"  # Poner valor numerico
-
     elif (preferenciaDecada >= 2000 and preferenciaDecada < 2010):
         num_dec = preferenciaDecada
         preferenciaDecada = "2000"
-
     elif (preferenciaDecada >= 2010 and preferenciaDecada < 2020):
         num_dec = preferenciaDecada
         preferenciaDecada = "10"
-
     else:
         preferenciaDecada = "Seleccione"
-        num_dec = randint(1990, 2022)
+        num_dec = -1
 
+    # ---------------
     if (preferenciaNivelHabilidad == "Novato"):
         preferenciaNivelHabilidad = "ANY%"  # Poner valor numerico
         num_exp = 1.5
-
+        entradas += 1
     elif (preferenciaNivelHabilidad == "Experto"):
         preferenciaNivelHabilidad = "100%"
         num_exp = 3.5
-
+        entradas += 1
     else:
         preferenciaNivelHabilidad = ""
         num_exp = 0
 
-    preferenciaCategoria = obtenerCategoria(num_exp, num_time, num_dec)
+    #Obtener la categoria de preferencia mediante la Inferencia de Mamdani
+    preferenciaCategoria = obtenerCategoria(num_exp, num_time, num_dec,entradas)
 
+    # ---------------
+    #Asignar un valor linguistico al valor de retorno.
     if (preferenciaCategoria >= 0.0 and preferenciaCategoria <= 6.5):
         categoria = "Accion"
     elif (preferenciaCategoria > 6.5 and preferenciaCategoria <= 14.0):
         categoria = "Plataforma"
-    elif (preferenciaCategoria > 14.0 and preferenciaCategoria <= 21.0):
+    elif (preferenciaCategoria > 14.0 and preferenciaCategoria <= 21.5):
         categoria = "Coches"
-    elif (preferenciaCategoria > 21.0 and preferenciaCategoria <= 28.5):
+    elif (preferenciaCategoria > 22 and preferenciaCategoria <= 28.5):
         categoria = "Aventura"
     elif (preferenciaCategoria > 28.5 and preferenciaCategoria < 33):
         categoria = "Terror"
 
+    # ---------------
+    #Obtener los juegos que cumplan con las preferencias del usuario
     juegosAdecuados = []
     for juego in listaJuegos:
         if (preferenciaDecada == "Seleccione" and preferenciaTiempo != "Seleccione"):
@@ -325,12 +321,15 @@ def capturarInformacion(combo1,combo2,radio):
         elif(preferenciaDecada != "Seleccione" and preferenciaTiempo == "Seleccione"):
             if(juego.genero == categoria and juego.dificultad == preferenciaNivelHabilidad and juego.decada == preferenciaDecada):
                 juegosAdecuados.append(juego)
+        elif(preferenciaTiempo == "Seleccione" and preferenciaDecada == "Seleccione"):
+            if (juego.genero == categoria and juego.dificultad == preferenciaNivelHabilidad):
+                juegosAdecuados.append(juego)
         else:
             if (juego.genero == categoria and juego.dificultad == preferenciaNivelHabilidad and juego.decada == preferenciaDecada and juego.tiempo == preferenciaTiempo):
                 juegosAdecuados.append(juego)
 
-
-    tkinter.messagebox.showinfo(message="Los siguientes juegos le van a gustar", title="Recomendaciones")
+    # ---------------
+    tkinter.messagebox.showinfo(message="Los juegos de la categoria "+categoria+" le van a gustar", title="Recomendaciones")
     # Ventana que muestra los juegos.}
     recomendaciones = tkinter.Tk()
     recomendaciones.geometry("800x250")
@@ -357,9 +356,11 @@ def capturarInformacion(combo1,combo2,radio):
         i +=1
 
     treeview.pack()
-
     plt.show()
 
+#Entradas: nombre de usuario y ventana principal.
+#Salidas:
+#Funcionamiento: Genera la vista de seleccion de preferencias.
 def ingresoSistema(inputNombre, ventana):
     nombre = str(inputNombre.get())
 
@@ -421,6 +422,10 @@ def ingresoSistema(inputNombre, ventana):
                             command=lambda: capturarInformacion(combo, combo2, radioValue))
     enviar.place(x=510, y=340)
 
+#Entradas:
+#Salidas:
+#Funcionamiento: Crea la ventana principal.
+
 def root():
     # Crear ventana
     ventana = tkinter.Tk()
@@ -453,6 +458,9 @@ def root():
     # Se muestra la ventana
     ventana.mainloop()
 
-if (__name__ == "__main__"):
+def main():
     leerJuegos()
     root()
+
+if (__name__ == "__main__"):
+    main()
