@@ -252,15 +252,27 @@ def capturarInformacion(combo1,combo2,radio):
         return
 
     # ---------------
-    if (preferenciaTiempo == "Menos de 30 minutos"):
+    if (preferenciaTiempo == "10-20 minutos"):
         preferenciaTiempo = "Corta"  # Poner valor numerico
-        num_time = 14.5
+        num_time = 15
         entradas += 1
-    elif (preferenciaTiempo == "Entre 30 y 90 minutos"):
+    elif (preferenciaTiempo == "30-40 minutos"):
         preferenciaTiempo = "Media"
-        num_time = 40
+        num_time = 35
         entradas += 1
-    elif (preferenciaTiempo == "Más de 90 minutos"):
+    elif (preferenciaTiempo == "40-50 minutos"):
+        preferenciaTiempo = "Media"
+        num_time = 45
+        entradas += 1
+    elif (preferenciaTiempo == "50-60 minutos"):
+        preferenciaTiempo = "Media"
+        num_time = 55
+        entradas += 1
+    elif (preferenciaTiempo == "60-90 minutos"):
+        preferenciaTiempo = "Larga"
+        num_time = 75
+        entradas += 1
+    elif (preferenciaTiempo == "Mas de 90 minutos"):
         preferenciaTiempo = "Larga"
         num_time = 100
         entradas += 1
@@ -283,11 +295,19 @@ def capturarInformacion(combo1,combo2,radio):
         num_dec = -1
 
     # ---------------
-    if (preferenciaNivelHabilidad == "Novato"):
+    if (preferenciaNivelHabilidad == "Novato1"):
         preferenciaNivelHabilidad = "ANY%"  # Poner valor numerico
         num_exp = 1.5
         entradas += 1
-    elif (preferenciaNivelHabilidad == "Experto"):
+    elif (preferenciaNivelHabilidad == "Novato2"):
+        preferenciaNivelHabilidad = "ANY%"
+        num_exp = 1.75
+        entradas += 1
+    elif( preferenciaNivelHabilidad == "Experto1"):
+        preferenciaNivelHabilidad = "100%"
+        num_exp = 3.25
+        entradas += 1
+    elif (preferenciaNivelHabilidad == "Experto2"):
         preferenciaNivelHabilidad = "100%"
         num_exp = 3.5
         entradas += 1
@@ -388,7 +408,7 @@ def ingresoSistema(inputNombre, ventana):
     tiempo.place(x=50, y=60)
 
     combo = ttk.Combobox()
-    combo = ttk.Combobox(state="readonly", values=["Menos de 30 minutos", "Entre 30 y 90 minutos", "Más de 90 minutos",
+    combo = ttk.Combobox(state="readonly", values=["10-20 minutos", "30-40 minutos","40-50 minutos","50-60 minutos","60-90 minutos","Mas de 90 minutos",
                                                    "No es relevante"])
     combo.set("Seleccione")
     combo.place(x=50, y=85)
@@ -405,18 +425,24 @@ def ingresoSistema(inputNombre, ventana):
     combo2.set("Seleccione")
     combo2.place(x=50, y=145)
 
-    decada = tkinter.Label(selecciones, text="¿Que tan habil se considera?", bg="#88cffa")
+    decada = tkinter.Label(selecciones, text="¿Que tan habil se considera? ↓2 Novato - ↑3 Experto", bg="#88cffa")
     decada.place(x=50, y=180)
 
     radioValue = tkinter.StringVar()
 
-    rdioNovato = tkinter.Radiobutton(selecciones, text='Novato',
-                                     variable=radioValue, value='Novato')
-    rdioExperto = tkinter.Radiobutton(selecciones, text='Experto',
-                                      variable=radioValue, value='Experto')
+    rdioNovato1 = tkinter.Radiobutton(selecciones, text='1',
+                                     variable=radioValue, value='Novato1')
+    rdioNovato2 = tkinter.Radiobutton(selecciones, text='2',
+                                      variable=radioValue, value='Novato2')
+    rdioExperto1 = tkinter.Radiobutton(selecciones, text='3',
+                                      variable=radioValue, value='Experto1')
+    rdioExperto2 = tkinter.Radiobutton(selecciones, text='4',
+                                      variable=radioValue, value='Experto2')
 
-    rdioNovato.place(x=50, y=210)
-    rdioExperto.place(x=150, y=210)
+    rdioNovato1.place(x=50, y=210)
+    rdioNovato2.place(x=90, y=210)
+    rdioExperto1.place(x=130, y=210)
+    rdioExperto2.place(x=170, y=210)
 
     enviar = tkinter.Button(selecciones, text="Consultar",
                             command=lambda: capturarInformacion(combo, combo2, radioValue))
